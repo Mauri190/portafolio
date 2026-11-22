@@ -1,13 +1,37 @@
 "use client";
+
 import { useState } from "react";
 
 export default function Contact() {
-  const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("¡Mensaje listo! Luego lo conectamos a tu correo o API.");
-    e.currentTarget.reset();
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        alert("Ocurrió un error al enviar el mensaje.");
+      }
+    } catch (err) {
+      // Si ocurre un error de red local, mandamos el formulario por método tradicional de respaldo
+      form.submit();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -40,22 +64,31 @@ export default function Contact() {
           </ul>
 
           <form onSubmit={handleSubmit} className="p-6 rounded-xl border border-[#2f403a] bg-[#17221e] space-y-4">
+            {/* Clave de Web3Forms */}
+            <input type="hidden" name="access_key" value="7dbc68e5-a74e-4a68-90ff-7782b18b1b54" />
+
             <label className="block text-sm font-bold text-[#ece9e2]">
               Nombre
-              <input type="text" required className="mt-1 w-full px-3 py-2 rounded-lg border border-[#2f403a] bg-[#0c1311] text-[#ece9e2]" />
+              <input type="text" name="name" required className="mt-1 w-full px-3 py-2 rounded-lg border border-[#2f403a] bg-[#0c1311] text-[#ece9e2] focus:border-[#ff6a1a] outline-none" />
             </label>
             <label className="block text-sm font-bold text-[#ece9e2]">
               Correo
-              <input type="email" required className="mt-1 w-full px-3 py-2 rounded-lg border border-[#2f403a] bg-[#0c1311] text-[#ece9e2]" />
+              <input type="email" name="email" required className="mt-1 w-full px-3 py-2 rounded-lg border border-[#2f403a] bg-[#0c1311] text-[#ece9e2] focus:border-[#ff6a1a] outline-none" />
             </label>
             <label className="block text-sm font-bold text-[#ece9e2]">
               Mensaje
-              <textarea rows={4} required className="mt-1 w-full px-3 py-2 rounded-lg border border-[#2f403a] bg-[#0c1311] text-[#ece9e2]" />
+              <textarea name="message" rows={4} required className="mt-1 w-full px-3 py-2 rounded-lg border border-[#2f403a] bg-[#0c1311] text-[#ece9e2] focus:border-[#ff6a1a] outline-none" />
             </label>
-            <button type="submit" className="px-6 py-3 rounded-lg bg-gradient-to-r from-[#ff5800] to-[#ffb000] text-[#17100a] font-extrabold hover:brightness-110 transition">
-              Enviar mensaje
+            
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="px-6 py-3 rounded-lg bg-gradient-to-r from-[#ff5800] to-[#ffb000] text-[#17100a] font-extrabold hover:brightness-110 transition disabled:opacity-50 cursor-pointer"
+            >
+              {isSubmitting ? "Enviando..." : "Enviar mensaje"}
             </button>
-            {status && <p className="text-sm font-bold text-[#ffb21f]">{status}</p>}
+
+            {submitted && <p className="text-sm font-bold text-[#6fd9a3] mt-2">¡Mensaje enviado con éxito! Revisa tu correo.</p>}
           </form>
         </div>
       </div>
