@@ -17,6 +17,28 @@ export const projectsData: Project[] = [
     demoUrl: "https://kiroo.page.gd/",
   },
   {
+    title: "Lochcraft",
+    description:
+      "Un robot que se encargaba de recolectar basura en zonas pequeñas como lo son lagos y lagunas presentado en la competencia steam passion 2024.",
+    tags: ["Robótica", "Arduino", "Diseño Mecánico", "Hardware"],
+    image: "/images/Lochcraft.jpeg",
+  },
+  {
+    title: "WRO",
+    description:
+      "Participación en la Olimpiada Mundial de Robótica (WRO), en la categoría seguidor de línea, donde estuvimos creando un robot por jornadas de tiempo de 5 rondas, desarrollada en la academia británica cuscatleca.",
+    tags: ["Robótica", "Programación", "WRO", "Hardware"],
+    image: "/images/wro.jpeg",
+  },
+  {
+    title: "TOEIC Practice",
+    description:
+      "Plataforma web interactiva de práctica y preparación para el examen TOEIC, orientada a evaluar y preparación para la prueba oficial.",
+    tags: ["HTML5", "CSS3", "JavaScript", "Inglés"],
+    image: "/images/toeic.png", // (puedes ajustar el nombre del archivo de imagen si lo guardas distinto)
+    demoUrl: "https://toeicpracticee.netlify.app/",
+  },
+  {
     title: "SpeedTimerSV",
     description:
       "Temporizador web de speedcubing con scrambles oficiales de la WCA, seguimiento de récords mundiales y librería de algoritmos para todas las categorías oficiales.",

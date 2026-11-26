@@ -9,7 +9,7 @@ export const skillsData = [
   },
   {
     category: "Robótica & Hardware",
-    items: ["FIRST Global Robotics", "Sistemas de Control", "Sensores y Actuadores", "Prototipado"],
+    items: ["FIRST Global Robotics", "Sistemas de Control", "Sensores y Actuadores", "Prototipado", "Arduino"],
   },
   {
     category: "Herramientas & Habilidades",

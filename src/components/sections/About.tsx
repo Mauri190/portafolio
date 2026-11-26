@@ -11,7 +11,7 @@ export default function About() {
               Soy Mauricio Enrique Guzmán Rivera (todos me dicen <strong>Mauri</strong>). Desde que aprendí a armar el cubo Rubik en 2023 y empecé a programar aplicaciones web, descubrí que me apasiona resolver problemas complejos con lógica y creatividad.
             </p>
             <p>
-              Actualmente curso mi último año de bachillerato y soy becario del programa <strong>¡Supérate!</strong>, donde desarrollo proyectos full-stack con PHP, MySQL, JavaScript y Next.js, mientras me preparo para estudiar Ingeniería en Ciencias de la Computación y Ciberseguridad.
+              Actualmente curso mi último año de bachillerato y soy becario del programa <strong>¡Supérate!</strong>, donde he desarrollado una pasión por la informática, mientras me preparo para estudiar Ingeniería en Ciencias de la Computación Integradas.
             </p>
           </div>
 
@@ -22,11 +22,11 @@ export default function About() {
             </li>
             <li className="flex justify-between border-b border-[#2f403a] pb-2">
               <strong className="text-[#ece9e2]">Idiomas</strong>
-              <span className="text-[#9fada6]">Español, Inglés</span>
+              <span className="text-[#9fada6]">Español, Inglés (intermedio)</span>
             </li>
             <li className="flex justify-between border-b border-[#2f403a] pb-2">
               <strong className="text-[#ece9e2]">Intereses</strong>
-              <span className="text-[#9fada6]">Speedcubing, Robótica, Web</span>
+              <span className="text-[#9fada6]">Speedcubing, Robótica, programación</span>
             </li>
             <li className="flex justify-between">
               <strong className="text-[#ece9e2]">WCA ID</strong>

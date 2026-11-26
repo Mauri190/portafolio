@@ -13,7 +13,7 @@ export default function Hero() {
             Desarrollador Web · Speedcuber WCA · Robótica
           </p>
           <p className="text-[#9fada6] text-base md:text-lg mb-6 max-w-xl leading-relaxed">
-            Estudiante salvadoreño apasionado por crear aplicaciones web completas, competir con el cubo Rubik a nivel oficial y construir robots para representar a El Salvador.
+            Estudiante salvadoreño apasionado por crear aplicaciones web completas, competir con el cubo Rubik a nivel oficial y a la vez programar robots.
           </p>
 
           <div className="flex flex-wrap gap-2 mb-8">
@@ -42,13 +42,13 @@ export default function Hero() {
           <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl p-1 bg-gradient-to-tr from-[#ff5800] to-[#ffb000]">
             <div className="w-full h-full bg-[#17221e] rounded-xl overflow-hidden flex items-center justify-center">
               <img
-                src="/images/tu-foto.jpg"
+                src="/images/foto-personal.jpeg"
                 alt="Mauricio Guzmán"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                   e.currentTarget.parentElement!.innerHTML =
-                    '<span class="text-[#9fada6] text-sm p-4 text-center">Guarda tu foto en:<br/><b>public/images/tu-foto.jpg</b></span>';
+                    '<span class="text-[#9fada6] text-sm p-4 text-center">Guarda tu foto en:<br/><b>public/images/foto-personal.jpeg</b></span>';
                 }}
               />
             </div>
