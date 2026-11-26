@@ -4,19 +4,32 @@ import React, { useState } from "react";
 
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
+    setErrorMessage("");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    formData.append("access_key", "7dbc68e5-a74e-4a68-90ff-7782b18b1b54");
+
+    const payload = {
+      access_key: "57f20f7f-c8f9-40b3-956e-af9ba8b29a5d",
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+      subject: "Nuevo mensaje desde tu Portafolio Web",
+    };
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
@@ -26,9 +39,11 @@ export default function Contact() {
         form.reset();
       } else {
         setStatus("error");
+        setErrorMessage(data.message || "Error al enviar el mensaje.");
       }
     } catch {
       setStatus("error");
+      setErrorMessage("Error de conexión. Inténtalo de nuevo.");
     }
   };
 
@@ -107,7 +122,7 @@ export default function Contact() {
 
         {status === "error" && (
           <p className="text-red-400 text-sm text-center font-medium">
-            Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.
+            {errorMessage || "Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo."}
           </p>
         )}
       </form>
